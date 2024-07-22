@@ -8,4 +8,6 @@ add_executable(cash_c main.c
         cash.c
         cash.h
         builtins.c
-        builtins.h)
+        builtins.h
+        utils.c
+        utils.h)
