@@ -4,6 +4,7 @@
 void cash_init(void);
 char *read_line(void);
 char **tokenize(char *line);
+int launch(char **args);
 int exec(char **args);
 
 #endif //CASH_C_CASH_H
