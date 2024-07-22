@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "cash.h"
+#include "constants.h"
 
 void cash_init(void) {
     char *line;
@@ -19,7 +20,17 @@ void cash_init(void) {
 }
 
 char *read_line(void) {
-    // TODO
+    char * line= NULL;
+    size_t bufsz = 0;
+    if (getline(&line, &bufsz, stdin)) {
+        if (feof(stdin)) {
+            exit(SUCCESS);
+        } else {
+            perror("Failed to read line");
+            exit(ERROR);
+        }
+    }
+    return line;
 }
 
 char **tokenize(char *line) {
