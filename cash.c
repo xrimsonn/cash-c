@@ -5,11 +5,14 @@
 #include <sys/wait.h>
 #include "cash.h"
 #include "constants.h"
+#include "builtins.h"
+#include "utils.h"
 
 void cash_init(void) {
     char *line;
     char **args;
     int status;
+    go_to_user_home();
 
     do {
         printf("& ");
@@ -25,7 +28,7 @@ void cash_init(void) {
 char *read_line(void) {
     char * line= NULL;
     size_t bufsz = 0;
-    if (getline(&line, &bufsz, stdin)) {
+    if (getline(&line, &bufsz, stdin) == -1) {
         if (feof(stdin)) {
             exit(SUCCESS);
         } else {
@@ -72,7 +75,6 @@ char **tokenize(char *line) {
 
 int launch(char **args) {
     pid_t pid;
-    pid_t wpid;
     int status;
 
     pid = fork();
@@ -88,13 +90,23 @@ int launch(char **args) {
     // Parent
     } else {
         do {
-            wpid = waitpid(pid, &status, WUNTRACED);
+            waitpid(pid, &status, WUNTRACED);
         } while (!WIFEXITED(status) && !WIFSIGNALED(status));
     }
 
-    return 1;
+    return AWAIT_INPUT;
 }
 
 int exec(char **args) {
-    // TODO
+    if (args[0] == NULL) {
+        return ERROR;
+    }
+
+    for (int i = 0; i < num_builtins; i++) {
+        if (strcmp(args[0], builtin_str[i]) == 0) {
+            return (*builtin_func[i])(args);
+        }
+    }
+
+    return launch(args);
 }
