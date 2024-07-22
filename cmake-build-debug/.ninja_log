@@ -1,0 +1,6 @@
+# ninja log v6
+1	18	1721620888581423024	CMakeFiles/cash_c.dir/main.c.o	f4a187dbb6c40bf3
+1	33	1721620888581423024	CMakeFiles/cash_c.dir/cash.c.o	768f62acf37eea2c
+42	62	1721620888625423798	cash_c	baecf732367b004e
+1	29	1721620888585423094	CMakeFiles/cash_c.dir/builtins.c.o	22aea77cab4ffea7
+18	42	1721620888601423377	CMakeFiles/cash_c.dir/utils.c.o	b5217aaaa493bf87

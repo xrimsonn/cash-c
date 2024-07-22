@@ -1,0 +1,3 @@
+/home/antonio/CLionProjects/cash-c/cmake-build-debug/CMakeFiles/cash_c.dir
+/home/antonio/CLionProjects/cash-c/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/antonio/CLionProjects/cash-c/cmake-build-debug/CMakeFiles/rebuild_cache.dir
