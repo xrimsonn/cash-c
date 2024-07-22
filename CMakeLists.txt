@@ -6,4 +6,6 @@ set(CMAKE_C_STANDARD 11)
 add_executable(cash_c main.c
         constants.h
         cash.c
-        cash.h)
+        cash.h
+        builtins.c
+        builtins.h)
